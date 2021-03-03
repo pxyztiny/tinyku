@@ -1,8 +1,8 @@
-name: 百度极速版
+name: 跃动
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/59 * * * *'
+     - cron: '49 * * * *'
   watch:
     types: started
 jobs:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        BAIDU_COOKIE: ${{ secrets.BAIDU_COOKIE }}
+        YDZ_yuedongzuTOKEN: ${{ secrets.YDZ_yuedongzuTOKEN }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
@@ -23,9 +23,9 @@ jobs:
         run: |
           npm install
       - name: '运行 【百度极速】'
-        if: env.BAIDU_COOKIE
+        if: env.BYDZ_yuedongzuTOKEN
         run: |
-          node Task/baidu_speed.js
+          node ydz.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
