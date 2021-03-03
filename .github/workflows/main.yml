@@ -23,7 +23,7 @@ jobs:
         run: |
           npm install
       - name: '运行 【跃动】'
-        if: env.BYDZ_yuedongzuTOKEN
+        if: env.YDZ_yuedongzuTOKEN
         run: |
           node ydz.js
     
