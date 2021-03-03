@@ -1,7 +1,7 @@
 name: tinyku script
 on:
   schedule:
-    - cron: '0 */4 * * *'
+    - cron: '0 24 * * *'
   workflow_dispatch:
   watch:
     types: started
@@ -22,7 +22,7 @@ jobs:
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/xuxiaobo4510/APPSIGN.git"
-          source_branch: "master"
+          source_repo: "https://github.com/pxyztiny/tinyku.git"
+          source_branch: "main"
           destination_branch: "main"
           github_token: ${{ secrets.PAT }}
