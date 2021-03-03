@@ -1,6 +1,6 @@
 
 /* ziye 
-github地址 https://github.com/ziye11
+github地址 https://github.cn/ziye11
 TG频道地址  https://t.me/ziyescript
 TG交流群   https://t.me/joinchat/AAAAAE7XHm-q1-7Np-tF3g
 boxjs链接  https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ziye.boxjs.json
@@ -8,19 +8,17 @@ boxjs链接  https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/ziye.
 转载请备注个名字，谢谢
 
 ⚠️悦动族
-点击  http://yuedongzu.yichengw.cn/?id=28844 下载APP 或者APP Store 搜索悦动族
+点击 http://yuedongzu.yichengw.cn/?id=28844 下载APP  谢谢支持
 
 2.28 制作
 3.1 完成
 3.1-2 修复前置报错，修复签到问题
 3.2 调整抽奖机制，一次运行5次抽奖，抽中1000金币则兑奖
-3.2 修复手机不能跑的低级错误,调整提现时间为8点以后
-3.2-3 增加10分钟限速，修复用户名判定，修复视频助力
 
 ⚠️ 时间设置    0,30 0-23 * * *    每天 25次以上就行 
 
 一 视频助力手动也是不行的 
-二 默认20点睡7点醒，时间务必包括这两个点 
+二 默认8点睡7点醒，时间务必包括这两个点 
 (已内置随机udid，添加重写无视多设备检测，如非必要，勿频繁登录)
 
 ⚠️一共1个位置 1个ck  👉 2条 Secrets 
@@ -53,13 +51,13 @@ http-response https:\/\/yuedongzu\.yichengw\.cn\/* script-path=https://raw.githu
 */
 const $ = Env("悦动族");
 $.idx = ($.idx = ($.getval('yuedongzuSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
-//const notify = $.isNode() ? require("./sendNotify") : ``;
+const notify = $.isNode() ? require("./sendNotify") : ``;
 const COOKIE = $.isNode() ? require("./yuedongzuCOOKIE") : ``;
 const logs = 0; // 0为关闭日志，1为开启
 const notifyttt = 1 // 0为关闭外部推送，1为12 23 点外部推送
 const notifyInterval = 2; // 0为关闭通知，1为所有通知，2为12 23 点通知  ， 3为 6 12 18 23 点通知 
-$.message = '', COOKIES_SPLIT = '', CASH = '', CZ = '', ddtime = '';
-const yuedongzutokenArr = [];
+$.message = '', COOKIES_SPLIT = '', CASH = '', ddtime = '';
+let yuedongzutokenArr = [];
 let yuedongzutokenVal = ``;
 let middleyuedongzuTOKEN = [];
 if ($.isNode()) {
@@ -108,6 +106,20 @@ if (!COOKIE.yuedongzutokenVal) {
             }
         }
     }
+    yuedongzutokenArr=[ {
+        "imei": "6e85025e-f87c-46b3-adea-5cde20865bac",
+        "store": "3",
+        "ini": "29",
+        "version": "5",
+        "platform": "1",
+        "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wveXVlZG9uZ3p1LnlpY2hlbmd3LmNuXC9hcHBzXC9sb2dpblwvd2VjaGF0IiwiaWF0IjoxNjE0NjcwMDA1LCJleHAiOjIwNTM2MjcwMDA1LCJuYmYiOjE2MTQ2NzAwMDUsImp0aSI6IlhjVmFtZlZEUnhxNlFvT1oiLCJzdWIiOjMxNzk2LCJwcnYiOiI0MWRmODgzNGYxYjk4ZjcwZWZhNjBhYWVkZWY0MjM0MTM3MDA2OTBjIn0.-XKB8vOBi2j6u40rzYT3cwE2P3Av6UiPKP5s2eGOCxU",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 10; GLK-AL00 Build/HUAWEIGLK-AL00)",
+        "Host": "yuedongzu.yichengw.cn",
+        "Connection": "Keep-Alive",
+        "Accept-Encoding": "gzip",
+        "Content-Length": "0"
+      }]
     if (yuedongzutokenArr == '') {
         Length = 0
     } else Length = yuedongzutokenArr.length
@@ -131,6 +143,7 @@ function GetCookie() {
         $.msg($.name + $.idx, `获取yuedongzutokenVal: 成功🎉`, ``);
     }
 }
+yuedongzutokenVal="bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wveXVlZG9uZ3p1LnlpY2hlbmd3LmNuXC9hcHBzXC9sb2dpblwvd2VjaGF0IiwiaWF0IjoxNjE0NjcwMDA1LCJleHAiOjIwNTM2MjcwMDA1LCJuYmYiOjE2MTQ2NzAwMDUsImp0aSI6IlhjVmFtZlZEUnhxNlFvT1oiLCJzdWIiOjMxNzk2LCJwcnYiOiI0MWRmODgzNGYxYjk4ZjcwZWZhNjBhYWVkZWY0MjM0MTM3MDA2OTBjIn0.-XKB8vOBi2j6u40rzYT3cwE2P3Av6UiPKP5s2eGOCxU"
 console.log(
     `================== 脚本执行 - 北京时间(UTC+8)：${new Date(
     new Date().getTime() +
@@ -193,14 +206,6 @@ function time(inputTime) {
     s = date.getSeconds();
     return Y + M + D + h + m + s;
 };
-//日期格式化时间戳
-function timecs() {
-    if ($.isNode()) {
-        var date = new Date(newtime).getTime() - 8 * 60 * 60 * 1000
-    } else var date = new Date(newtime).getTime()
-
-    return date;
-};
 //随机udid 大写
 function udid() {
     var s = [];
@@ -241,6 +246,7 @@ if (isGetCookie) {
 } else {
     !(async () => {
         await all();
+        await $.wait(1000)
         await msgShow();
     })()
     .catch((e) => {
@@ -254,9 +260,9 @@ async function all() {
     if (!Length) {
         $.msg(
             $.name,
-            '提示：⚠️请点击前往获取 http://yuedongzu.yichengw.cn/?id=28844\n',
-            ' http://yuedongzu.yichengw.cn/?id=28844', {
-                "open-url": " http://yuedongzu.yichengw.cn/?id=28844"
+            '提示：⚠️请点击前往获取http://yuedongzu.yichengw.cn/?id=28844\n',
+            'http://yuedongzu.yichengw.cn/?id=28844', {
+                "open-url": "http://yuedongzu.yichengw.cn/?id=28844"
             }
         );
         return;
@@ -269,46 +275,43 @@ async function all() {
             yuedongzutokenVal = yuedongzutokenArr[i];
         }
         header = {
-            'store': `appstore`,
-            'Authorization': `${yuedongzutokenVal}`,
-            'Connection': `keep-alive`,
-            'Accept-Encoding': `gzip, deflate, br`,
-            'version': `3`,
-            'idfa': ``,
-            'Content-Type': `application/x-www-form-urlencoded`,
-            'User-Agent': `YDZ/20 CFNetwork/1206 Darwin/20.1.0`,
-            'platform': `2`,
-            'imei': ``,
-            'Host': `yuedongzu.yichengw.cn`,
-            'Accept-Language': `zh-cn`,
-            'Accept': `*/*`
-        };
+            "imei": "6e85025e-f87c-46b3-adea-5cde20865bac",
+            "store": "3",
+            "ini": "29",
+            "version": "5",
+            "platform": "1",
+            "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wveXVlZG9uZ3p1LnlpY2hlbmd3LmNuXC9hcHBzXC9sb2dpblwvd2VjaGF0IiwiaWF0IjoxNjE0NjcwMDA1LCJleHAiOjIwNTM2MjcwMDA1LCJuYmYiOjE2MTQ2NzAwMDUsImp0aSI6IlhjVmFtZlZEUnhxNlFvT1oiLCJzdWIiOjMxNzk2LCJwcnYiOiI0MWRmODgzNGYxYjk4ZjcwZWZhNjBhYWVkZWY0MjM0MTM3MDA2OTBjIn0.-XKB8vOBi2j6u40rzYT3cwE2P3Av6UiPKP5s2eGOCxU",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 10; GLK-AL00 Build/HUAWEIGLK-AL00)",
+            "Host": "yuedongzu.yichengw.cn",
+            "Connection": "Keep-Alive",
+            "Accept-Encoding": "gzip",
+            "Content-Length": "0"
+          };
         O = (`${$.name + (i + 1)}🔔`);
         await console.log(`-------------------------\n\n🔔开始运行【${$.name+(i+1)}】`)
         let cookie_is_live = await user(); //用户名
         if (!cookie_is_live) {
             continue;
         }
-        await jinbi_record() //收益记录
-        if (CZ >= 10) {
-            await help_index() //助力活动
-            await home() //首页信息
-            await coupon() //签到
-            await zhuan_index() //任务列表
-            await pophongbaoyu() //红包雨
-            await dk_info() //打卡
-            await lucky() //转盘抽奖
-            await water_info() //喝水
-            await sleep_info() //睡觉
-            await ggk() //刮刮卡
-            await $.wait(8000)
-            await lucky() //转盘抽奖
-            await mystate() //福利
-            await kk_list() //看看赚
-            await news_info() //资讯赚
-            await tixian_html() //提现
-        }
-
+        await help_index() //助力活动
+        await home() //首页信息
+        await coupon() //签到
+        await zhuan_index() //任务列表
+        await pophongbaoyu() //红包雨
+        await dk_info() //打卡
+        await water_info() //喝水
+        await sleep_info() //睡觉
+        await ggk() //刮刮卡
+        await $.wait(8000)
+        await lucky() //转盘抽奖
+        await $.wait(1000)
+        await lucky() //转盘抽奖
+        await $.wait(1000)
+        await mystate() //福利
+        await kk_list() //看看赚
+        await news_info() //资讯赚
+        await tixian_html() //提现
 
     }
 }
@@ -344,12 +347,12 @@ function user(timeout = 0) {
                 try {
                     if (logs) $.log(`${O}, 用户名🚩: ${data}`);
                     $.user = JSON.parse(data);
-                    if ($.user.uid) {
+                    if ($.user.username) {
                         console.log(`\n${O}\n========== ${$.user.username} ==========\n微信绑定：${$.user.wx_username},今日收益：${$.user.day_jinbi/10000}元\n现金余额：${$.user.money}元,累计收益：${$.user.leiji_jinbi/10000}元\n`)
                         $.message += `\n${O}\n========== 【${$.user.username}】 ==========\n【微信绑定】：${$.user.wx_username},今日收益：${$.user.day_jinbi/10000}元\n【现金余额】：${$.user.money}元,累计收益：${$.user.leiji_jinbi/10000}元\n`;
                         resolve(true);
                     }
-                    if (!$.user.uid) {
+                    if (!$.user.username) {
                         $.msg(O, time(Number(tts())) + "❌❌❌COOKIE失效");
                         if ($.isNode()) {
                             notify.sendNotify(O, time(Number(tts())) + "❌❌❌COOKIE失效");
@@ -365,44 +368,6 @@ function user(timeout = 0) {
         }, timeout)
     })
 }
-
-
-//收益记录
-function jinbi_record(timeout = 0) {
-    return new Promise(async (resolve) => {
-        setTimeout(() => {
-                let url = {
-                    url: `https://yuedongzu.yichengw.cn/apps/user/jinbi_record?`,
-                    headers: header,
-                    body: `page=1&page_limit=25&`,
-                }
-                $.post(url, async (err, resp, data) => {
-                    try {
-                        if (logs) $.log(`${O}, 收益记录🚩: ${data}`);
-                        $.jinbi_record = JSON.parse(data);
-                        if ($.jinbi_record.code == 200) {
-                            if ($.jinbi_record.data && $.jinbi_record.data[0].add_date) {
-                                newtime = $.jinbi_record.data[0].add_date + 'T' + $.jinbi_record.data[0].add_time
-                                CZ = ((tts() - timecs(newtime)) / 60000).toFixed(0)
-
-                                console.log(`收益记录：距离上次收益${CZ}分钟，已限速10分钟\n`);
-                                $.message += `【收益记录】：距离上次收益${CZ}分钟，已限速10分钟\n`;
-
-                            } else CZ = 11
-
-                        }
-                    } catch (e) {
-                        $.logErr(e, resp);
-                    } finally {
-                        resolve()
-                    }
-                })
-            },
-            timeout)
-    })
-}
-
-
 //首页信息
 function home(timeout = 0) {
     return new Promise((resolve) => {
@@ -688,13 +653,10 @@ function help_index(timeout = 0) {
                     if ($.help_index.code == 200) {
                         console.log(`助力活动：现金${$.help_index.jinbi}元,差${$.help_index.diff_jinbi}元,时间剩余${($.help_index.time/3600).toFixed(0)}小时\n`);
                         $.message += `【助力活动】：现金${$.help_index.jinbi}元,差${$.help_index.diff_jinbi}元,时间剩余${($.help_index.time/3600).toFixed(0)}小时\n`;
-                        nonce_str = $.help_index.nonce_str
-                        if ($.help_index.diff_jinbi > 0 && $.help_index.btn_st == 0) {
-                            await help_click()
-                        } else {
-                            console.log(`视频助力：今日已达到上限\n`);
-                            $.message += `【视频助力】：今日已达到上限\n`;
-                        }
+                        //nonce_str = $.help_index.nonce_str
+                        //if ($.help_index.diff_jinbi > 0) {
+                        //await help_click()
+                        //}
                     }
                 } catch (e) {
                     $.logErr(e, resp);
@@ -724,9 +686,6 @@ function help_click(timeout = 0) {
                     if ($.help_click.code == 200) {
                         console.log(`视频助力：${$.help_click.jinbi/10000}元,领取成功\n`);
                         $.message += `【视频助力】：${$.help_click.jinbi/10000}元,领取成功\n`;
-                        tid = 15
-                        pos = 1
-                        await index()
                     }
                 } catch (e) {
                     $.logErr(e, resp);
@@ -799,7 +758,7 @@ function zhuan_index(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let url = {
-                url: `https://yuedongzu.yichengw.cn/apps/zhuan_index?`,
+                url: `https://yuedongzu.yichengw.cn/apps/zhuan_index? `,
                 headers: header,
             }
             $.post(url, async (err, resp, data) => {
@@ -918,7 +877,7 @@ function zhuan_done(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let url = {
-                url: `https://yuedongzu.yichengw.cn/apps/zhuan_done?`,
+                url: `https://yuedongzu.yichengw.cn/apps/zhuan_done? `,
                 headers: header,
                 body: `taskid=${taskid}&`,
             }
@@ -1026,7 +985,7 @@ function sleep_info(timeout = 0) {
                     if ($.sleep_info.is_sleep == 0) {
                         console.log(`睡觉状态：清醒中\n`);
                         $.message += `【睡觉状态】：清醒中\n`;
-                        if (nowTimes.getHours() === 20) {
+                        if (nowTimes.getHours() === 8) {
                             await sleep_start()
                         }
                     }
@@ -1044,7 +1003,7 @@ function sleep_start(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let url = {
-                url: `https://yuedongzu.yichengw.cn/apps/sleep_start?`,
+                url: `https://yuedongzu.yichengw.cn/mini/sleep_start?`,
                 headers: header,
             }
             $.post(url, async (err, resp, data) => {
@@ -1069,7 +1028,7 @@ function sleep_end(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let url = {
-                url: `https://yuedongzu.yichengw.cn/apps/sleep_end?`,
+                url: `https://yuedongzu.yichengw.cn/mini/sleep_end?`,
                 headers: header,
             }
             $.post(url, async (err, resp, data) => {
@@ -1217,7 +1176,7 @@ function guapost(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let url = {
-                url: `https://yuedongzu.yichengw.cn/apps/gua/det_post?`,
+                url: `https://yuedongzu.yichengw.cn/apps/gua/det_post? `,
                 headers: header,
                 body: `sign=${sign}&gid=${id}&glid=${glid}&`,
             }
@@ -1338,7 +1297,7 @@ function mystate(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let url = {
-                url: `https://yuedongzu.yichengw.cn/apps/mystate?`,
+                url: `https://yuedongzu.yichengw.cn/apps/mystate? `,
                 headers: header,
             }
             $.post(url, async (err, resp, data) => {
@@ -1360,13 +1319,13 @@ function mystate(timeout = 0) {
                         if ($.mystate.box_st == 0) {
                             await box_click() //宝箱
                         }
-                        if ($.mystate.jindan_st == 2) {
-                            console.log(`金蛋福利：已完成\n`);
-                            $.message += `【金蛋福利】：已完成\n`;
+                        if ($.mystate.st == 2) {
+                            console.log(`首页福利：已完成\n`);
+                            $.message += `【首页福利】：已完成\n`;
                         }
-                        if ($.mystate.box_st == 2) {
-                            console.log(`宝箱福利：已完成\n`);
-                            $.message += `【宝箱福利】：已完成\n`;
+                        if ($.mystate.st == 2) {
+                            console.log(`首页福利：已完成\n`);
+                            $.message += `【首页福利】：已完成\n`;
                         }
                     }
                 } catch (e) {
@@ -1595,7 +1554,7 @@ function kk_done(timeout = 0) {
                 try {
                     if (logs) $.log(`${O}, 看看赚完成🚩: ${data}`);
                     $.kk_done = JSON.parse(data);
-                    if ($.kk_done.code == 200) {
+                    if ($.kk_done.msg) {
                         console.log(`看看赚完成：获得${$.kk_done.jinbi}金币\n`);
                         $.message += `【看看赚完成】：获得${$.kk_done.jinbi}金币\n`;
                         tid = 16
@@ -1617,7 +1576,7 @@ function news_info(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let url = {
-                url: `https://yuedongzu.yichengw.cn/apps/news_info?`,
+                url: `https://yuedongzu.yichengw.cn/apps/news_info? `,
                 headers: header,
                 body: `type_class=1&`,
             }
@@ -1651,7 +1610,7 @@ function news_done(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let url = {
-                url: `https://yuedongzu.yichengw.cn/apps/news_done?`,
+                url: `https://yuedongzu.yichengw.cn/apps/news_done?  `,
                 headers: header,
                 body: `nonce_str=${nonce_str}&`,
             }
@@ -1677,7 +1636,7 @@ function tixian_html(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let url = {
-                url: `https://yuedongzu.yichengw.cn/apps/user/tixian_html?`,
+                url: `https://yuedongzu.yichengw.cn/apps/user/tixian_html?  `,
                 headers: header,
             }
             $.post(url, async (err, resp, data) => {
@@ -1698,8 +1657,8 @@ function tixian_html(timeout = 0) {
                         }
                         console.log(`提现券：剩余${$.tixian_html.tixian_coupon}张券\n${jine2.jine}元：需要${jine2.cond}张券\n${jine3.jine}元：需要${jine3.cond}张券\n`);
                         $.message += `【提现券】：剩余${$.tixian_html.tixian_coupon}张券\n【${jine2.jine}元】：需要${jine2.cond}张券\n【${jine3.jine}元】：需要${jine3.cond}张券\n`;
-                        if (!day_tixian_tip && nowTimes.getHours() >= 8) {
-                            if (CASH == 0.3 && $.user.money >= CASH && $.user.day_jinbi >= 6000) {
+                        if (!day_tixian_tip) {
+                            if (CASH == 0.3 && $.user.money >= CASH) {
                                 await tixian() //提现
                             }
                             if (CASH == 1 && $.tixian_html.tixian_coupon >= 8 && $.user.money >= CASH) {
@@ -1722,7 +1681,7 @@ function tixian_html(timeout = 0) {
                                     CASH = 5
                                 } else if ($.user.money > 1 && $.tixian_html.tixian_coupon >= 8) {
                                     CASH = 1
-                                } else if ($.user.money > 5 && $.user.day_jinbi >= 6000) {
+                                } else if ($.user.money > 5) {
                                     CASH = 0.3
                                 }
                                 if (CASH != 888) {
@@ -1745,7 +1704,7 @@ function tixian(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             let url = {
-                url: `https://yuedongzu.yichengw.cn/apps/user/tixian?`,
+                url: `https://yuedongzu.yichengw.cn/apps/user/tixian? `,
                 headers: header,
                 body: `tx=${CASH}&`,
             }
