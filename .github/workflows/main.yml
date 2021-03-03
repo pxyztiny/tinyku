@@ -2,7 +2,7 @@ name: 跃动
 on:
   workflow_dispatch:
   schedule:
-     - cron: '49 * * * *'
+     - cron: '17,44 5-22 * * *'
   watch:
     types: started
 jobs:
