@@ -1,8 +1,8 @@
-name: 跃动
+name: 跃动,星球，猫猫
 on:
   workflow_dispatch:
   schedule:
-     - cron: '17,44 5-22 * * *'
+     - cron: '17,44 * * * *'
   watch:
     types: started
 jobs:
