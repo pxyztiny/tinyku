@@ -85,9 +85,9 @@ let ddxqhb = 0
     ddxqhdArr.push($.getdata(`ddxqhd${i}`))
     ddxqggurlArr.push($.getdata(`ddxqggurl${i}`))
   }
-  ddxqurlArr=["https://ddstar.palmmob.com/ddstar_app/activity/ReceiveAdBonus?bonusboxid=1&v=27&c=android&t=1614842891&u=1UB5HIVEWOBM1Qvfjnjo&x=42b074957108d97ffbdc5ab20de6b8e9& h2",""]
+  ddxqurlArr=["https://ddstar.palmmob.com/ddstar_app/activity/ReceiveAdBonus?bonusboxid=0&v=27&c=android&t=1614928831&u=1UB5HIVEWOBM1Qvfjnjo&x=0d06c53bfbf59e23f8a9f86df15894cf&"]
   ddxqhdArr=['{"Host":"ddstar.palmmob.com","content-type":"application/x-www-form-urlencoded;charset=utf-8","accept-encoding":"gzip","user-agent":"okhttp/3.12.1"}']
-  ddxqggurlArr=["https://ddstar.palmmob.com//ddstar_app/activity/ReceiveAdBonus?bonusboxid=1&v=27&c=android&t=1614842891&u=1UB5HIVEWOBM1Qvfjnjo&x=42b074957108d97ffbdc5ab20de6b8e9& h2"]
+  ddxqggurlArr=["https://ddstar.palmmob.com/ddstar_app/activity/ReceiveAdBonus?bonusboxid=1&v=27&c=android&t=1614928866&u=1UB5HIVEWOBM1Qvfjnjo&x=e071b3848af079c0ad63989d3ffd8390&"]
     console.log(`------------- 共${ddxqhdArr.length}个账号-------------\n`)
       for (let i = 0; i < ddxqhdArr.length; i++) {
         if (ddxqhdArr[i]) {
