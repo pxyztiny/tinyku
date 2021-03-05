@@ -31,6 +31,6 @@ jobs:
         run: |
           node ddxq.js
       - name: '运行 【猫猫】'
-        if: env.XSMM
+        if: env.YDZ_yuedongzuTOKEN
         run: |
           node xsmm.js
