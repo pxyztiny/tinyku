@@ -27,6 +27,10 @@ jobs:
         if: env.WXQD
         run: |
           node ysm.js
+      - name: '运行 【云扫码w】'
+        if: env.WXQD
+        run: |
+          node ysmw.js
       - name: '运行 【番茄看看】'
         if: env.WXQD
         run: |
