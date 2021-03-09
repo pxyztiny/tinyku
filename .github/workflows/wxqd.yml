@@ -3,7 +3,7 @@ name: 云扫码，番茄看看
 on:
   workflow_dispatch:
   schedule:
-     - cron: '50 0/6 * * *'
+     - cron: '50 3/6 * * *'
   watch:
     types: started
 jobs:
