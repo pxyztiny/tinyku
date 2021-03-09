@@ -22,10 +22,6 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【跃动】'
-        if: env.YDZ_yuedongzuTOKEN
-        run: |
-          node ydz.js
       - name: '运行 【dd星球】'
         if: env.YDZ_yuedongzuTOKEN
         run: |
